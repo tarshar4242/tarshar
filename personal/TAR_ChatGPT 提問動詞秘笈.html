@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT 提問動詞秘笈 (新手版)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+        :root {
+            --c1: #4a90e2; --c1-light: #eaf2fb;
+            --c2: #f5a623; --c2-light: #fef8e9;
+            --c3: #50e3c2; --c3-light: #eefcf9;
+            --c4: #e94e77; --c4-light: #fdeef3;
+            --c5: #9013fe; --c5-light: #f6e8ff;
+            --c6: #7ed321; --c6-light: #f3fae9;
+            --bg-color: #f7f8fc;
+            --card-bg: #ffffff;
+            --text-dark: #333;
+            --text-light: #555;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 25px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 10px 0;
+        }
+
+        .sub-title {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .scene-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .scene-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .scene-header {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .scene-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .scene-title-group {
+            flex-grow: 1;
+        }
+
+        .scene-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        
+        .scene-card.c1 .scene-title { color: var(--c1); }
+        .scene-card.c2 .scene-title { color: var(--c2); }
+        .scene-card.c3 .scene-title { color: var(--c3); }
+        .scene-card.c4 .scene-title { color: var(--c4); }
+        .scene-card.c5 .scene-title { color: var(--c5); }
+        .scene-card.c6 .scene-title { color: var(--c6); }
+        
+        .toggle-icon {
+            font-size: 24px;
+            font-weight: bold;
+            color: #aaa;
+            transition: transform 0.3s ease;
+        }
+        
+        .scene-card.active .toggle-icon {
+            transform: rotate(45deg);
+            color: var(--text-dark);
+        }
+
+        .verb-list {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+            padding: 0 20px;
+            border-top: 1px solid transparent;
+        }
+        
+        .scene-card.active .verb-list {
+            max-height: 2000px; /* Large enough to fit content */
+            opacity: 1;
+            padding: 20px 20px;
+            border-top-color: var(--border-color);
+        }
+
+        .verb-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid;
+        }
+        .scene-card.c1 .verb-item { border-color: var(--c1-light); }
+        .scene-card.c2 .verb-item { border-color: var(--c2-light); }
+        .scene-card.c3 .verb-item { border-color: var(--c3-light); }
+        .scene-card.c4 .verb-item { border-color: var(--c4-light); }
+        .scene-card.c5 .verb-item { border-color: var(--c5-light); }
+        .scene-card.c6 .verb-item { border-color: var(--c6-light); }
+
+        .verb-item h4 {
+            font-size: 17px;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+        }
+        
+        .verb-item p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+            background-color: var(--bg-color);
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+
+        .verb-item p strong {
+            color: #000;
+            font-weight: 700;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="title-section">
+            <h1 class="main-title">ChatGPT 提問動詞秘笈</h1>
+            <p class="sub-title">不知道怎麼問 ChatGPT 嗎？試試用更精準的動詞來提問！<br>點開下面的場景，就能找到靈感，讓你的回答品質立刻升級！</p>
+        </div>
+
+        <!-- Scene 1 -->
+        <div class="scene-card c1">
+            <div class="scene-header">
+                <div class="scene-icon">🧠</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 1. 資訊理解與處理</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene-card c2">
+            <div class="scene-header">
+                <div class="scene-icon">✍️</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 2. 創作與內容產出</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+        
+        <!-- Scene 3 -->
+        <div class="scene-card c3">
+            <div class="scene-header">
+                <div class="scene-icon">🧑‍🏫</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 3. 指導與建議</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene-card c4">
+            <div class="scene-header">
+                <div class="scene-icon">💬</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 4. 語言與溝通</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+        
+        <!-- Scene 5 -->
+        <div class="scene-card c5">
+            <div class="scene-header">
+                <div class="scene-icon">🗓️</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 5. 預測與規劃</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+        
+        <!-- Scene 6 -->
+        <div class="scene-card c6">
+            <div class="scene-header">
+                <div class="scene-icon">📋</div>
+                <div class="scene-title-group">
+                    <h3 class="scene-title">場景 6. 生活應用</h3>
+                </div>
+                <div class="toggle-icon">+</div>
+            </div>
+            <div class="verb-list"></div>
+        </div>
+
+        <div class="footer">
+            ✨ Learn with Tarshar — 2025
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const verbData = {
+                1: [
+                    { verb: '解釋 (Explain)', example: '<strong>解釋</strong>「知識螺旋理論 (SECI Model)」的核心四個階段，並提供一個企業應用的實例。' },
+                    { verb: '定義 (Define)', example: '為「社群網絡分析 (SNA)」<strong>下一個</strong>學術性的<strong>定義</strong>，並說明其在知識管理研究中的重要性。' },
+                    { verb: '總結 (Summarize)', example: '將這篇關於「組織記憶」的20頁論文，<strong>總結</strong>成500字的摘要，並保留關鍵引文。' },
+                    { verb: '描述 (Describe)', example: '<strong>描述</strong>一個理想的企業知識庫應具備的特徵與功能。' },
+                    { verb: '列出 (List)', example: '<strong>列出</strong>5種常用於評估知識管理系統成效的指標 (KPIs)。' },
+                    { verb: '比較 (Compare)', example: '<strong>比較</strong>「外顯知識」與「內隱知識」在組織內的傳遞方式與管理挑戰。' },
+                    { verb: '分析 (Analyze)', example: '<strong>分析</strong>一份企業內部訪談逐字稿，找出知識分享的關鍵節點與障礙。' },
+                    { verb: '闡述 (Elaborate)', example: '<strong>闡述</strong>「實踐社群 (CoP)」如何促進跨部門的知識流動與創新。' },
+                    { verb: '關聯 (Relate)', example: '<strong>關聯</strong>「組織學習」與「企業競爭力」之間的因果關係，並引用相關理論支持。' },
+                    { verb: '歸納 (Synthesize)', example: '從這10份案例研究中，<strong>歸納</strong>出成功導入知識管理系統的3個共通因素。' }
+                ],
+                2: [
+                    { verb: '產生／生成 (Generate)', example: '為我的碩士論文「AI在個人知識管理中的應用」<strong>產生</strong>三個可能的研究問題。' },
+                    { verb: '創作 (Create)', example: '<strong>創作</strong>一段引言，用於我的研究計畫書，旨在強調數位時代下知識管理的重要性。' },
+                    { verb: '編寫 (Write)', example: '根據我提供的大綱和關鍵詞，<strong>編寫</strong>論文第二章「文獻探討」的初稿。' },
+                    { verb: '設計 (Design)', example: '<strong>設計</strong>一個適用於新創團隊的輕量級知識庫架構，包含標籤系統與內容分類法。' },
+                    { verb: '構思 (Brainstorm)', example: '針對「如何提升員工使用內部知識平台的意願」這個主題，<strong>構思</strong>五個創新的解決方案。' },
+                    { verb: '改寫 (Rewrite)', example: '將這段充滿口語的訪談紀錄，<strong>改寫</strong>成學術論文中可引用的正式書面語。' },
+                    { verb: '延伸 (Expand)', example: '將「知識地圖」這個概念，<strong>延伸</strong>討論其在遠距工作團隊中的潛在應用。' },
+                    { verb: '縮短 (Shorten)', example: '將這段500字的摘要，<strong>縮短</strong>成一段150字以內的研討會論文摘要。' },
+                    { verb: '改善 (Improve)', example: '<strong>改善</strong>我這份研究計畫的「研究方法」章節，使其邏輯更嚴謹、步驟更清晰。' },
+                    { verb: '續寫 (Continue)', example: '我已經寫了研究背景，請你根據這個背景，<strong>續寫</strong>「研究動機」的部分。' }
+                ],
+                3: [
+                    { verb: '建議 (Suggest)', example: '針對我的論文題目，<strong>建議</strong>三個值得深入探討的子議題。' },
+                    { verb: '指導 (Guide)', example: '<strong>指導</strong>我如何使用 Zotero 搭配 Obsidian 建立一個有效的學術文獻管理流程。' },
+                    { verb: '提供 (Provide)', example: '<strong>提供</strong>一份進行質性研究中「半結構式訪談」的訪談大綱範本。' },
+                    { verb: '教學 (Teach)', example: '<strong>教學</strong>如何運用 VOSviewer 軟體，對 Scopus 資料庫的文獻進行關鍵字共現分析。' },
+                    { verb: '示範 (Demonstrate)', example: '<strong>示範</strong>如何撰寫一段符合 APA 第七版格式的文獻引用。' },
+                    { verb: '指出 (Point out)', example: '閱讀我這份論文草稿，並<strong>指出</strong>其中邏輯不連貫或論證薄弱的地方。' },
+                    { verb: '檢查 (Check)', example: '<strong>檢查</strong>這段英文摘要是否有文法錯誤或不自然的表達方式。' },
+                    { verb: '評估 (Evaluate)', example: '<strong>評估</strong>我設計的這份問卷，其題項是否能有效測量「知識分享意願」這個構面。' },
+                    { verb: '校正 (Proofread)', example: '<strong>校正</strong>這篇文章的參考文獻格式，確保所有條目都符合期刊的投稿要求。' },
+                    { verb: '回饋 (Feedback)', example: '針對我這份簡報的架構與視覺設計，提供具體的改善<strong>回饋</strong>。' }
+                ],
+                4: [
+                    { verb: '翻譯 (Translate)', example: '將這篇德文的知識管理期刊文章摘要，<strong>翻譯</strong>成流暢的學術中文。' },
+                    { verb: '換句話說 (Paraphrase)', example: '用更簡單易懂的方式，<strong>換句話說</strong>「權變理論 (Contingency Theory)」在知識管理中的意涵。' },
+                    { verb: '模擬 (Simulate)', example: '<strong>模擬</strong>一場我與指導教授的對話，我要向他報告我的研究進度，而他可能會提出挑戰性的問題。' },
+                    { verb: '角色扮演 (Role-play)', example: '你<strong>扮演</strong>一位反對導入新知識系統的資深員工，我扮演專案經理，練習如何說服你。' },
+                    { verb: '問問題 (Ask)', example: '針對我的研究主題，從批判性思考的角度<strong>問</strong>我五個尖銳的<strong>問題</strong>，幫助我審視盲點。' },
+                    { verb: '回答 (Answer)', example: '以一位知識管理專家的角度，<strong>回答</strong>「AI 是否會完全取代人類的內隱知識？」這個問題。' },
+                    { verb: '解答 (Solve)', example: '<strong>解答</strong>我在進行資料分析時，遇到的關於信度與效度的統計學問題。' },
+                    { verb: '澄清 (Clarify)', example: '<strong>澄清</strong>「資料」、「資訊」、「知識」與「智慧」在 DIKW 模型中的層級關係與區別。' },
+                    { verb: '辯論 (Debate)', example: '針對「知識是否應該完全開放共享」這個議題，提供正反兩方的論點進行<strong>辯論</strong>。' },
+                    { verb: '反駁 (Refute)', example: '有學者認為「知識管理已死」，請提出有力的證據與論述來<strong>反駁</strong>這個觀點。' }
+                ],
+                5: [
+                    { verb: '預測 (Predict)', example: '根據過去十年的文獻趨勢，<strong>預測</strong>未來五年知識管理領域最熱門的研究方向。' },
+                    { verb: '規劃 (Plan)', example: '為我接下來六個月的碩士論文撰寫進程，<strong>規劃</strong>一份詳細的甘特圖時程表。' },
+                    { verb: '安排 (Arrange)', example: '為一場為期兩天的「知識管理與組織創新」研討會，<strong>安排</strong>議程與講者順序。' },
+                    { verb: '設定 (Set)', example: '為一個知識管理導入專案，<strong>設定</strong>明確、可衡量的 SMART 目標。' },
+                    { verb: '制定 (Formulate)', example: '為一家剛成立的公司，<strong>制定</strong>一套初步的知識文件管理與版本控制規範。' },
+                    { verb: '預估 (Estimate)', example: '<strong>預估</strong>導入一套企業級知識管理系統所需的人力、時間與預算成本。' },
+                    { verb: '預測 (Forecast)', example: '（同Predict）根據目前的技術發展，<strong>預測 (Forecast)</strong> 生成式 AI 對知識工作者日常工作的影響。' },
+                    { verb: '計算 (Calculate)', example: '提供一個公式，並<strong>計算</strong>一個知識分享活動的投資回報率 (ROI)。' },
+                    { verb: '模擬 (Simulate)', example: '<strong>模擬</strong>在一個組織中，一項關鍵知識從產生到被應用的完整生命週期。' },
+                    { verb: '預演 (Rehearse)', example: '為我的論文口試，<strong>預演</strong>一遍15分鐘的簡報內容，並計時。' }
+                ],
+                6: [
+                    { verb: '推薦 (Recommend)', example: '<strong>推薦</strong>5本知識管理領域的必讀經典著作，並附上簡短理由。' },
+                    { verb: '搜尋 (Search)', example: '<strong>搜尋</strong>近三年內，發表在頂級期刊上，關於「遠距工作與知識分享」的文獻。' },
+                    { verb: '整理 (Organize)', example: '將我這些雜亂的筆記，按照主題（如：文獻探討、研究方法、案例分析）進行<strong>整理</strong>分類。' },
+                    { verb: '排序 (Sort)', example: '將這20篇待讀論文，根據與我研究主題的相關性進行優先級<strong>排序</strong>。' },
+                    { verb: '選擇 (Select)', example: '分析 Scopus 和 Web of Science 這兩個學術資料庫的優缺點，幫助我<strong>選擇</strong>一個作為主要文獻來源。' },
+                    { verb: '提醒 (Remind)', example: '<strong>提醒</strong>我每週五下午三點，整理本週的研究進度並撰寫週報給指導教授。' },
+                    { verb: '記錄 (Record)', example: '<strong>記錄</strong>下我剛剛與同學腦力激盪時產生的所有想法，並標示出最有潛力的三個。' },
+                    { verb: '安排 (Schedule)', example: '下個月要進行田野調查，請幫我<strong>安排</strong>與三位訪談對象的會議時間，並避免時程衝突。' },
+                    { verb: '訂定 (Book)', example: '（學術情境轉換）幫我草擬一封Email，向一位知名學者<strong>預約（Book）</strong>線上訪談時間。' },
+                    { verb: '追蹤 (Track)', example: '建立一個簡單的表格，讓我能<strong>追蹤</strong>每篇論文的閱讀狀態（未讀、閱讀中、已摘要）。' }
+                ]
+            };
+
+            const sceneCards = document.querySelectorAll('.scene-card');
+            
+            sceneCards.forEach((card, index) => {
+                const sceneId = index + 1;
+                const verbListContainer = card.querySelector('.verb-list');
+                const header = card.querySelector('.scene-header');
+
+                // Populate the content for each card
+                const verbs = verbData[sceneId];
+                if (verbs) {
+                    verbs.forEach(data => {
+                        const item = document.createElement('div');
+                        item.className = 'verb-item';
+                        item.innerHTML = `
+                            <h4>${data.verb}</h4>
+                            <p>${data.example}</p>
+                        `;
+                        verbListContainer.appendChild(item);
+                    });
+                }
+
+                // Add click event to the header
+                header.addEventListener('click', () => {
+                    // Check if the current card is already active
+                    const isActive = card.classList.contains('active');
+                    
+                    // First, close all other cards
+                    sceneCards.forEach(otherCard => {
+                        otherCard.classList.remove('active');
+                    });
+                    
+                    // If the clicked card was not active, open it
+                    if (!isActive) {
+                        card.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
